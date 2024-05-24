@@ -1,12 +1,12 @@
-FROM ubuntu:latest
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
 
-
+# Install any necessary system packages
 RUN apt-get update && apt-get install -y \
-    python3-pip \
-    git && \
-    python3 --version && \
-    pip3 --version && \
-    pip3 install PyYAML
+    git
+
+# Install the PyYAML library
+RUN pip3 install PyYAML
 
 COPY feed.py /usr/bin/feed.py
 
